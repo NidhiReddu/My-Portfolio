@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Crop Recommend{% endblock title %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-lg">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Nidhi Reddu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            {% comment %} <span class="navbar-toggler-icon"></span> {% endcomment %}
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav ms-auto gap-5">
+             
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'home-view' %}"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'about-view' %}"> About</a>
+                </li>
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link active" href="#"> Experience</a>
+                </li> {% endcomment %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'skills-view' %}"> Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'projects-view' %}"> Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'contact-view' %}"> Contact</a>
+                </li>
+                
+            </ul>
+                </div> 
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        {% block content %}{% endblock content %}
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+    <script>
+        {% for m  in messages  %}
+            Swal.fire({icon:"{{m.tags | default:'info'}}",title: "{{ m }}"});
+        {% endfor %}
+    </script>
+    {% endif %}
+</body>
+</html>
