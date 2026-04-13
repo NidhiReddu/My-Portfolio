@@ -8,8 +8,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "portfolio/wsgi.py"
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+    },
+    {
+        "src": "/(.*)",
+        "dest": "portfolio/wsgi.py"
     }
   ]
 }
